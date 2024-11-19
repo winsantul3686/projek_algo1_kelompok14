@@ -19,11 +19,24 @@ def register():
         if not file_exists:  
             writer.writerow(["username","password"])
         writer.writerow([username,password])
+        print("________________________")
         print("Akun telah didaftarkan!!")
+        print("________________________")
+        print("1.Login")
+        print("2.Selesai")
+        otw_login = input ("pilihlah angka untuk selanjutnya (1/2) :")
+        if otw_login == '2':
+            print("=-=-=-=-=-=- Pendaftaran selesai! -=-=-=-=-=-=")
+            input("klik enter untuk login")
+        elif otw_login== '1':
+            login()
+        else:
+            print("input tidak tersedia")
 
 
 
 def login():
+    os.system('cls')
     print("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-")
     print("$$$$$$$$$^^^^^  SELAMAT DATANG di TRIJAYA  ^^^^^$$$$$$$$")
     print("________________________ LOGIN _________________________")
