@@ -3,7 +3,7 @@ import csv
 import os 
 import datetime as dt
 
-print ("isok")
+
 def register():
     os.system('cls')
     print("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-")
