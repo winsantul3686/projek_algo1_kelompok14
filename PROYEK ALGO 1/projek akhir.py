@@ -32,8 +32,7 @@ def register():
             login()
         else:
             print("input tidak tersedia")
-
-
+register()
 
 def login():
     os.system('cls')
@@ -56,8 +55,8 @@ def login():
                 return
 
     print("Login gagal! Username atau password salah.")
-register()
-login()
+
+    login()
 
 def jenis_produk(username):
     print(f"Selamat datang {username}, silahkan pilih jenis produk : ")
@@ -76,19 +75,16 @@ def jenis_produk(username):
         =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
           $$$$$$$$$^^^^^  Alat Persiapan Lahan  ^^^^^$$$$$$$$
         __________________ SELAMAT BERBELANJA ___________________
-        1. nama_produk ({stok})
-        2. nama_produk ({stok})
-        3. nama_produk ({stok})
-        4. nama_produk ({stok})
-        5. nama_produk ({stok})
-        6. nama_produk ({stok})
-        7. nama_produk ({stok})
-        8. nama_produk ({stok})
-        9. kembali
-
+        ''')
+        df = pd.read_csv("data_produk.csv", sep=",", header = None, names=['Produk', 'Stok', 'Harga'])
+        print(df)
+        print('''
         A. Masukkan keranjang
         B. Beli dan bayar
         ''')
+        tambah_produk= input("Tambahkan Produk : ")
+    elif tambah_produk == "a":
+        print("Produk ditambahkan")
         
     elif jenis == '2':
         print('''
@@ -177,8 +173,13 @@ def jenis_produk(username):
         ''')
     elif jenis == '7':
         pass
-def keranjang():
-      pass
+with open('RegTRIJAYA.csv', 'r') as file:
+        writer = csv.writer(file)
+username = writer
+jenis_produk(username)
+    
+#def keranjang():
+#      pass
 
 # def deskripsi_produk():
 #     pass
