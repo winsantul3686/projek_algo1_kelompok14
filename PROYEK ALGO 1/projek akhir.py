@@ -3,6 +3,21 @@ import csv
 import os 
 import datetime as dt
 
+def home():
+    os.system('cls')
+    print("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-")
+    print("$$$$$$$$$^^^^^  SELAMAT DATANG di TRIJAYA  ^^^^^$$$$$$$$")
+    print('''
+          1. Register
+          2. Login
+           ''')
+    home = input("Pilih fitur : ")
+    if home == "1":
+        register()
+    elif home == "2":
+        login()
+
+
 
 def register():
     os.system('cls')
@@ -32,7 +47,6 @@ def register():
             login()
         else:
             print("input tidak tersedia")
-register()
 
 def login():
     os.system('cls')
@@ -55,11 +69,12 @@ def login():
                 return
 
     print("Login gagal! Username atau password salah.")
+home()    
 
-    login()
 
 def jenis_produk(username):
-    print(f"Selamat datang {username}, silahkan pilih jenis produk : ")
+    os.system('cls')
+    print(f"Selamat datang, silahkan pilih jenis produk : ")
     print('''
     1. Alat persiapan lahan
     2. Alat penanaman
@@ -75,16 +90,23 @@ def jenis_produk(username):
         =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
           $$$$$$$$$^^^^^  Alat Persiapan Lahan  ^^^^^$$$$$$$$
         __________________ SELAMAT BERBELANJA ___________________
+        1. nama_produk ({stok})
+        2. nama_produk ({stok})
+        3. nama_produk ({stok})
+        4. nama_produk ({stok})
+        5. nama_produk ({stok})
+        6. nama_produk ({stok})
+        7. nama_produk ({stok})
+        8. nama_produk ({stok})
+
         ''')
-        df = pd.read_csv("data_produk.csv", sep=",", header = None, names=['Produk', 'Stok', 'Harga'])
-        print(df)
+# df = pd.read_csv("data_produk.csv", sep="\s+", header = None, names=['Name', 'Age', 'Height'])
+# print(df)
+        print(input("pilih produk: "))
         print('''
         A. Masukkan keranjang
         B. Beli dan bayar
         ''')
-        tambah_produk= input("Tambahkan Produk : ")
-    elif tambah_produk == "a":
-        print("Produk ditambahkan")
         
     elif jenis == '2':
         print('''
@@ -99,7 +121,9 @@ def jenis_produk(username):
         6. nama_produk ({stok})
         7. nama_produk ({stok})
         8. nama_produk ({stok})
-
+        ''')
+        print(input("pilih produk: "))
+        print('''
         A. Masukkan keranjang
         B. Beli dan bayar
         ''')
@@ -116,7 +140,9 @@ def jenis_produk(username):
         6. nama_produk ({stok})
         7. nama_produk ({stok})
         8. nama_produk ({stok})
-
+        ''')
+        print(input("pilih produk: "))
+        print('''
         A. Masukkan keranjang
         B. Beli dan bayar
         ''')
@@ -133,14 +159,16 @@ def jenis_produk(username):
         6. nama_produk ({stok})
         7. nama_produk ({stok})
         8. nama_produk ({stok})
-
+        ''')
+        print(input("pilih produk: "))
+        print('''
         A. Masukkan keranjang
         B. Beli dan bayar
         ''')
     elif jenis == '5':
-        print('''
+       print('''
         =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-          $$$$$$$$$^^^^^  Alat Pascapanen  ^^^^^$$$$$$$$
+          $$$$$$$$$^^^^^  Alat Pemeliharaan Tanaman  ^^^^^$$$$$$$$
         __________________ SELAMAT BERBELANJA ___________________
         1. nama_produk ({stok})
         2. nama_produk ({stok})
@@ -150,14 +178,16 @@ def jenis_produk(username):
         6. nama_produk ({stok})
         7. nama_produk ({stok})
         8. nama_produk ({stok})
-
+        ''')
+       print(input("pilih produk: "))
+       print('''
         A. Masukkan keranjang
         B. Beli dan bayar
         ''')
     elif jenis == '6':
         print('''
         =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-          $$$$$$$$$^^^^^  Bahan Pertanian  ^^^^^$$$$$$$$
+          $$$$$$$$$^^^^^  Alat Pemeliharaan Tanaman  ^^^^^$$$$$$$$
         __________________ SELAMAT BERBELANJA ___________________
         1. nama_produk ({stok})
         2. nama_produk ({stok})
@@ -167,19 +197,29 @@ def jenis_produk(username):
         6. nama_produk ({stok})
         7. nama_produk ({stok})
         8. nama_produk ({stok})
-
+        ''')
+        print(input("pilih produk: "))
+        print('''
         A. Masukkan keranjang
         B. Beli dan bayar
         ''')
-    elif jenis == '7':
-        pass
+#     elif jenis == '7':
+#         pass
 with open('RegTRIJAYA.csv', 'r') as file:
         writer = csv.writer(file)
 username = writer
 jenis_produk(username)
     
-#def keranjang():
-#      pass
+def keranjang(username, produk):
+    file_exists = os.path.isfile('KeranjangTRIJAYA.csv')
+    with open('KeranjangTRIJAYA.csv', mode='a', newline='') as file:
+        writer = csv.writer(file)
+        if not file_exists:
+            writer.writerow(["username", "produk"])
+        writer.writerow([username, produk])
+        print(f"{produk} berhasil ditambahkan ke keranjang!")
+        input("Tekan enter untuk kembali.")
+        jenis_produk(username)
 
 # def deskripsi_produk():
 #     pass
