@@ -2,7 +2,7 @@ import pandas as pd
 import csv
 import os 
 import datetime as dt
-
+print ("coba")
 
 def register():
     os.system('cls')
