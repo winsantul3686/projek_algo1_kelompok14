@@ -1207,19 +1207,72 @@ def kosongkan_keranjang(username):
 #     elif voucher == "":
 #         pass
 
-def main():
-    home()
+def data_pengiriman():
+    os.system('cls')
     
-main()
-    
+    nama_pembeli = input ("Masukkan Nama: ")
+    provinsi_pembeli = input ("Masukkan Provinsi: ")
+    alamat_pembeli = input ("Masukkan Alamat: ")
+    no_pembeli = input ("Masukkan Nomor HP: ")
 
+    print ('''
+    PILIH OPSI KURIR:
+    1. JNE
+    2. SiCepat Express
+    3. JNT
+    4. Trijaya Express
+           ''')
+    kurir = input ("Pilih Opsi Kurir: ")
+    if kurir == "1":
+        print ("Pengriman Menggunakan JNE, dengan nama", nama_pembeli ,)
+        print ("Provinsi: ", provinsi_pembeli)
+        print ("Alamat: ", alamat_pembeli)
+        print ("Nomor HP: ", no_pembeli)
+
+    elif kurir == "2":
+        print ("Pengriman Menggunakan SiCepat Express, dengan nama", nama_pembeli ,)
+        print ("Provinsi: ", provinsi_pembeli)
+        print ("Alamat: ", alamat_pembeli)
+        print ("Nomor HP: ", no_pembeli)
+    
+    elif kurir == "3":
+        print ("Pengriman Menggunakan JNT, dengan nama", nama_pembeli ,)
+        print ("Provinsi: ", provinsi_pembeli)
+        print ("Alamat: ", alamat_pembeli)
+        print ("Nomor HP: ", no_pembeli)
+    
+    elif kurir == "4":
+        print ("Pengriman Menggunakan Trijaya Express, dengan nama", nama_pembeli ,)
+        print ("Provinsi: ", provinsi_pembeli)
+        print ("Alamat: ", alamat_pembeli)
+        print ("Nomor HP: ", no_pembeli)
+
+    elif not os.path.isfile('provinsi.csv'): 
+        print("Wilayah Tidak Tersedia!.")
+        return None
+    
+    with open('provinsi.csv', mode='r') as file:
+        reader = csv.DictReader(file)
+        provinsi_found = False  # Flag untuk mengecek apakah provinsi ditemukan
+        for row in reader:
+            if row['provinsi'].lower() == provinsi_pembeli.lower():  # Membandingkan dengan provinsi dari input
+                provinsi_found = True
+                ongkir = row['ongkir']
+                print(f"Ongkir untuk wilayah {provinsi_pembeli} adalah {ongkir}!")
+                
+        
+        if not provinsi_found:
+            print(f"Provinsi {provinsi_pembeli} tidak ditemukan dalam daftar.")
+            return None
 
 # def deskripsi_produk():
 #     pass
 
-# def data_pengiriman():
-#     pass
+
+def main():
+    home()
     
+main()
 
      
                  
